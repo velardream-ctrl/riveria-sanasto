@@ -11,7 +11,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="icon" type="image/png" href="icon-192.png">
-  <link rel="stylesheet" href="style.css?v=1.0.0">
+  <link rel="stylesheet" href="style.css?v=1.1.0">
   <title>Riveria Sanasto • FI / RU</title>
 </head>
 <body>
@@ -32,12 +32,28 @@
   <div class="main-column">
     <header class="topbar">
       <div><span class="eyebrow">TERVETULOA OPISKELEMAAN!</span><h1 id="page-title">Изучаем финский</h1><p id="page-subtitle">Термины и фразы, которые пригодятся на практике.</p></div>
-      <div class="header-badges"><span class="status" id="online-status">● Проверка связи</span><span class="status muted" id="storage-status">Проверка сохранения</span></div>
+      <div class="header-badges"><button class="btn white" id="cloud-toggle" type="button" style="font-size:13px">☁ Синхронизация</button><span class="status" id="online-status">● Проверка связи</span><span class="status muted" id="storage-status">Проверка сохранения</span></div>
     </header>
+    <section id="cloud-panel" class="panel" hidden style="margin:18px 22px;padding:18px">
+      <h2 style="margin-top:0">Общий прогресс: Google Sheets</h2>
+      <p class="hint">Все устройства используют один и тот же адрес Apps Script и один ключ. Словарь работает офлайн; изменения передаются при возвращении интернета. Не вводите реальные данные пациентов.</p>
+      <div class="two-col">
+        <label class="field"><span>Ссылка Apps Script /exec</span><input id="cloud-url" class="control" type="url" autocomplete="off" placeholder="https://script.google.com/macros/s/.../exec"></label>
+        <label class="field"><span>Личный ключ синхронизации</span><input id="cloud-key" class="control" type="password" autocomplete="off" placeholder="Длинный ключ из настроек Apps Script"></label>
+      </div>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn primary" id="cloud-save" type="button">Сохранить и подключить</button>
+        <button class="btn good" id="cloud-run" type="button">↻ Синхронизировать сейчас</button>
+        <button class="btn white" id="cloud-disconnect" type="button">Отключить</button>
+      </div>
+      <p class="hint"><b id="cloud-indicator">☁ Не подключено</b> · <span id="cloud-state">Синхронизация не настроена</span></p>
+      <p class="hint" id="cloud-last">Ни одной подтверждённой синхронизации</p>
+      <p class="hint">Ключ хранится в памяти этого браузера. Для безопасности используйте только собственное устройство. Не отправляйте ключ в чат и не публикуйте в GitHub.</p>
+    </section>
     <main id="main-content" tabindex="-1">
       <div class="load-box">Открываю базу слов…</div>
     </main>
-    <footer>Riveria Sanasto v1.0.1 • Только учебные примеры. Не вводите настоящие данные пациентов.</footer>
+    <footer>Riveria Sanasto v1.1.0 • Только учебные примеры. Не вводите настоящие данные пациентов.</footer>
   </div>
 </div>
 <nav class="mobile-nav" aria-label="Навигация на телефоне">
@@ -49,6 +65,7 @@
 </nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="data.js?v=1.0.0"></script>
-<script src="app.js?v=1.0.1"></script>
+<script src="app.js?v=1.1.0"></script>
+<script src="sync.js?v=1.1.0"></script>
 </body>
 </html>
