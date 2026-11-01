@@ -32,9 +32,9 @@
   <div class="main-column">
     <header class="topbar">
       <div><span class="eyebrow">TERVETULOA OPISKELEMAAN!</span><h1 id="page-title">Изучаем финский</h1><p id="page-subtitle">Термины и фразы, которые пригодятся на практике.</p></div>
-      <div class="header-badges"><button class="btn white" id="cloud-toggle" type="button" style="font-size:13px">☁ Синхронизация</button><span class="status" id="online-status">● Проверка связи</span><span class="status muted" id="storage-status">Проверка сохранения</span></div>
+      <div class="header-badges"><button id="cloud-toggle" type="button" style="display:none" tabindex="-1" aria-hidden="true">Синхронизация</button><span class="status" id="online-status">● Проверка связи</span><span class="status muted" id="storage-status">Проверка сохранения</span></div>
     </header>
-    <section id="cloud-panel" class="panel" hidden style="margin:18px 22px;padding:18px">
+    <section id="cloud-panel" class="panel" hidden style="margin:14px 0 0;padding:18px">
       <h2 style="margin-top:0">Общий прогресс: Google Sheets</h2>
       <p class="hint">Все устройства используют один и тот же адрес Apps Script и один ключ. Словарь работает офлайн; изменения передаются при возвращении интернета. Не вводите реальные данные пациентов.</p>
       <div class="two-col">
@@ -53,7 +53,7 @@
     <main id="main-content" tabindex="-1">
       <div class="load-box">Открываю базу слов…</div>
     </main>
-    <footer>Riveria Sanasto v1.1.1 • Только учебные примеры. Не вводите настоящие данные пациентов.</footer>
+    <footer>Riveria Sanasto v1.1.2 • Только учебные примеры. Не вводите настоящие данные пациентов.</footer>
   </div>
 </div>
 <nav class="mobile-nav" aria-label="Навигация на телефоне">
@@ -65,7 +65,7 @@
 </nav>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="data.js?v=1.0.0"></script>
-<script src="app.js?v=1.1.0"></script>
+<script src="app.js?v=1.1.2"></script>
 <script src="sync.js?v=1.1.0"></script>
 </body>
 </html>
