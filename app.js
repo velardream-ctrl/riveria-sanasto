@@ -1,4 +1,4 @@
-/* Riveria Sanasto v1.0 — intentionally ES5-style JavaScript for older Safari/iOS 12.
+/* Riveria Sanasto v1.0.1 — intentionally ES5-style JavaScript for older Safari/iOS 12.
    Educational public content only. Progress and user additions live on this device.
    No server or Google API credentials are embedded here. */
 (function () {
@@ -20,7 +20,7 @@
   function cardPool(){var base=allTerms().concat(D.phrases);var out=[];var i,x;for(i=0;i<base.length;i++){x=base[i];if(state.filter!=='all'&&x.cat!==state.filter)continue;if(state.extraSearch&&!state.favorites[x.id])continue;out.push(x);}return out;}
   function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
   function ensureDeck(reset){if(reset||!state.deck.length){var items=cardPool();shuffle(items);state.deck=items.slice(0,Math.min(state.cardsCount,items.length));state.cardIndex=0;state.flipped=false;}}
-  function numberLearned(){var n=0;Object.keys(state.scores).forEach(function(k){if(state.scores[k]&&state.scores[k].correct>=3)n++;});return n;}
+  function numberLearned(){var n=0;Object.keys(state.scores).forEach(function(k){if(state.scores[k]&&Number(state.scores[k].correct||0)>0)n++;});return n;}
   function tabsHtml(active,opts,attr){var s='<div class="tabs">';for(var i=0;i<opts.length;i++){s+='<button class="btn '+(opts[i][0]===active?'primary':'white')+'" data-action="'+safe(attr)+'" data-value="'+safe(opts[i][0])+'">'+safe(opts[i][1])+'</button>';}return s+'</div>';}
   function optionsForCat(){var map={},list=[],i,x,all=allTerms();for(i=0;i<all.length;i++){x=all[i];if(!map[x.cat]){map[x.cat]=1;list.push([x.cat,x.catRu||x.cat]);}}list.sort(function(a,b){return a[1].localeCompare(b[1]);});return list;}
   function selectCats(current,id){var cats=optionsForCat(),s='<select id="'+id+'" class="control"><option value="all">Все темы</option>';for(var i=0;i<cats.length;i++)s+='<option value="'+safe(cats[i][0])+'"'+(current===cats[i][0]?' selected':'')+'>'+safe(cats[i][1])+'</option>';return s+'</select>';}
@@ -34,7 +34,7 @@
     var front=state.direction==='fi'?c.fi:c.ru,back=state.direction==='fi'?c.ru:c.fi,score=state.scores[c.id]||{};
     s+='<div class="section-title"><h2>Карточка '+(state.cardIndex+1)+' / '+state.deck.length+'</h2><p>'+safe(c.catRu||c.cat||'')+' · '+(score.correct||0)+' верных</p></div><div class="flashcard"><div class="flash-top"><span>'+safe(c.id)+'</span><button class="star-btn" data-action="favorite" aria-label="В избранное">'+(state.favorites[c.id]?'★':'☆')+'</button></div><div class="flash-term">'+safe(front)+'</div>';
     if(state.flipped){s+='<div class="flash-trans">'+safe(back)+'</div>';if(c.example)s+='<div class="flash-example">'+safe(c.example)+(c.exampleRu?' — '+safe(c.exampleRu):'')+'</div>';}else{s+='<div class="flash-hidden">Вспомни перевод — затем открой ответ</div>';}
-    s+='<div class="flash-actions">'+(state.flipped?'<button class="btn good" data-action="mark-good">✓ Знаю</button><button class="btn white" data-action="mark-hard">↻ Повторить</button>':'<button class="btn primary" data-action="flip">◉ Показать ответ</button>')+'<button class="btn white" data-action="next-card">Следующее →</button></div></div>';
+    s+='<div class="flash-actions">'+(state.flipped?'<button class="btn good" data-action="mark-good">✓ Знаю</button><button class="btn white" data-action="mark-hard">↻ Повторить</button>':'<button class="btn primary" data-action="flip">◉ Показать ответ</button>')+'<button class="btn white" data-action="next-card">Следующее →</button></div><p class="hint">«Знаю» добавляет слово в счётчик «Выучено», а «Следующее» пропускает без оценки.</p></div>';
   }
   s+='<div class="section-title"><h2>Темы для практики</h2></div><div>'+catHtml+'</div>';
   root.innerHTML=s;
