@@ -1,5 +1,5 @@
 /* Simple cache-first offline service worker; no server sync. */
-var CACHE_NAME='riveria-sanasto-2026-11-v1.1.0';
+var CACHE_NAME='riveria-sanasto-2026-11-v1.1.1';
 var FILES=['./','./index.html','./app.js?v=1.1.0','./style.css?v=1.1.0','./data.js?v=1.0.0','./sync.js?v=1.1.0','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',function(event){event.waitUntil(caches.open(CACHE_NAME).then(function(c){return c.addAll(FILES);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener('activate',function(event){event.waitUntil(caches.keys().then(function(keys){return Promise.all(keys.map(function(k){if(k!==CACHE_NAME)return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
