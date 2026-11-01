@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#e9f7fa">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Sanasto">
+  <meta name="description" content="Riveria Sanasto — финско-русский словарь для ухода, карточки и тренировка Mediatri. Работает офлайн после установки.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="stylesheet" href="style.css?v=1.0.0">
+  <title>Riveria Sanasto • FI / RU</title>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" aria-label="Разделы приложения">
+    <div class="brand"><span class="brand-symbol">✚</span><div><b>Riveria Sanasto</b><small>FI / RU • Hoitotyö</small></div></div>
+    <div class="side-intro">Финский язык для работы в сфере ухода</div>
+    <nav id="side-nav">
+      <button class="nav-item active" data-view="cards"><span>▣</span> Карточки <small>Kortit</small></button>
+      <button class="nav-item" data-view="practice"><span>◈</span> Тесты <small>Harjoitus</small></button>
+      <button class="nav-item" data-view="dictionary"><span>▤</span> Словарь <small>Sanasto</small></button>
+      <button class="nav-item" data-view="mediatri"><span>✎</span> Mediatri <small>Kirjaaminen</small></button>
+      <button class="nav-item" data-view="add"><span>＋</span> Новое слово <small>Lisää sana</small></button>
+      <button class="nav-item" data-view="backup"><span>⇄</span> Данные <small>Varmuuskopio</small></button>
+    </nav>
+    <div class="side-bottom"><div class="care-icon">♡</div><div>Учимся небольшими шагами<br>— каждый день</div></div>
+  </aside>
+  <div class="main-column">
+    <header class="topbar">
+      <div><span class="eyebrow">TERVETULOA OPISKELEMAAN!</span><h1 id="page-title">Изучаем финский</h1><p id="page-subtitle">Термины и фразы, которые пригодятся на практике.</p></div>
+      <div class="header-badges"><span class="status" id="online-status">● Проверка связи</span><span class="status muted" id="storage-status">Проверка сохранения</span></div>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <div class="load-box">Открываю базу слов…</div>
+    </main>
+    <footer>Riveria Sanasto v1.0 • Только учебные примеры. Не вводите настоящие данные пациентов.</footer>
+  </div>
+</div>
+<nav class="mobile-nav" aria-label="Навигация на телефоне">
+  <button class="mobile-item active" data-view="cards"><span>▣</span>Карточки</button>
+  <button class="mobile-item" data-view="practice"><span>◈</span>Тесты</button>
+  <button class="mobile-item" data-view="dictionary"><span>▤</span>Словарь</button>
+  <button class="mobile-item" data-view="mediatri"><span>✎</span>Mediatri</button>
+  <button class="mobile-item" data-view="more"><span>＋</span>Ещё</button>
+</nav>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="data.js?v=1.0.0"></script>
+<script src="app.js?v=1.0.0"></script>
+</body>
+</html>
